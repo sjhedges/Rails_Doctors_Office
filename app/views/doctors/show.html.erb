@@ -5,7 +5,7 @@
     <ul>
         <% @doctor.appointments.each do |appointment| %>
           <li>
-            <%= appointment.ingredient.name %> - <%= appointment.amount %> -
+            <%= @doctor.name %> - <%= appointment.day %> -
             <%= link_to 'Remove', appointment_path(appointment), method: :delete, data: {confirm: 'Really remove this patient?'} %>
           </li>
         <% end %>

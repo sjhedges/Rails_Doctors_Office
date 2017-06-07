@@ -1,2 +1,18 @@
-<h1>Patients#show</h1>
-<p>Find me in app/views/patients/show.html.erb</p>
+<h1>Patient: <%= @patient.name %> </h1>
+
+<% if @patient.doctors.any? %>
+    <h5> Patients </h5>
+    <ul>
+        <% @patient.appointments.each do |appointment| %>
+          <li>
+            <%= @patient.name %> - <%= appointment.day %> -
+            <%= link_to 'Remove', appointment_path(appointment), method: :delete, data: {confirm: 'Really remove this patient?'} %>
+          </li>
+        <% end %>
+    </ul>
+<% else %>
+  <h5>No Doctors Found</h5>
+<% end %>
+
+<%= link_to 'All Patients', patients_path %> |
+<%= link_to 'Edit', edit_patient_path(@patient) %>
